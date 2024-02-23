@@ -25,16 +25,21 @@ function createEquationBox() {
     equationBox.classList.add("mathBox");
     equationBox.innerHTML = 
         `<div>
-            <p>Math goes here</p>
+            <p>HELLO WORLD</p>
         </div>`
     ;
     mathBox.appendChild(equationBox);
     const numberBox = document.createElement("div");
     numberBox.classList.add("displayBox");
     numberBox.innerHTML = 
-        `<div>
-            <p>10 + 15 = ?</p>
-        </div>`
+    `<div> 
+    <h1>Math Game</h1>
+    <h4>For Smart People</h2>
+    </div>`    
+    
+    // `<div>
+    //         <p>10 + 15 = ?</p>
+    //     </div>`
     ;
     equationBox.appendChild(numberBox);
 }
