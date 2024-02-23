@@ -6,7 +6,7 @@ function createGameBox() {
     testElement.classList.add("gameBox");
     testElement.innerHTML =
         `<div> 
-            <p>Game goes here.</p> 
+            <p>Game goes here!!!</p> 
         </div>`
     ;
     gameBox.appendChild(testElement);
@@ -39,8 +39,8 @@ function createEquationBox() {
     
     // `<div>
     //         <p>10 + 15 = ?</p>
-    //     </div>`
-    ;
+    //     </div>`;
+
     equationBox.appendChild(numberBox);
 }
 
