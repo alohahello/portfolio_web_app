@@ -25,7 +25,7 @@ function createEquationBox() {
     equationBox.classList.add("mathBox");
     equationBox.innerHTML = 
         `<div>
-            <p>HELLO WORLD</p>
+            <p>Math goes here</p>
         </div>`
     ;
     mathBox.appendChild(equationBox);
