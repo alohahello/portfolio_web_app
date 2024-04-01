@@ -5,33 +5,35 @@ const gameContainer       = document.getElementById("game");
 gameContainer.style.display = "none";
 
 // Global Variables
-var difficulty = 1;
+var difficulty = 12;
 
 
 // EQUATION GENERATION FUNCTIONS
 
-function genAddition(difficulty = 1)
+function genAddition()
 {
     //
     // Generates a randomized addition equation using only whole positive numbers. 
     // Returns a tuple of 3 integers being num1, num2, and  answer
     //
 
-    const num1 = Math.floor(Math.random() * 12) + 1;        // Generates number between 1 and 10 inclusive
-    const num2 = Math.floor(Math.random() * 12) + 1;
+    const range = difficulty;
+    const num1 = Math.floor(Math.random() * range) + 1;        // Generates number between 1 and 10 inclusive
+    const num2 = Math.floor(Math.random() * range) + 1;
     answer = num1 + num2;
 
     return [num1, num2, '+'];
 }
-function genSubtraction(difficulty = 1)
+function genSubtraction()
 {
     //
     // Generates a randomized subtraction equation using only whole positive numbers. 
     // Returns a tuple of 3 integers being num1, num2, and  answer
     // 
 
-    const num1 = Math.floor(Math.random() * 12) + 1;        // Generates number between 1 and 10 inclusive
-    const num2 = Math.floor(Math.random() * 12) + 1;
+    const range = difficulty;
+    const num1 = Math.floor(Math.random() * range) + 1;        // Generates number between 1 and 10 inclusive
+    const num2 = Math.floor(Math.random() * range) + 1;
 
     if (num1 > num2)
     {
@@ -44,27 +46,28 @@ function genSubtraction(difficulty = 1)
         return [num2, num1, '-'];
     }
 }
-function genMultiplication(difficulty = 1)
+function genMultiplication()
 {
     // 
     // Generates a randomized multiplication equation using only whole positive numbers. 
     // Returns a tuple of 3 integers being num1, num2, and  answer
     // 
 
-    const num1 = Math.floor(Math.random() * 12) + 1;        // Generates number between 1 and 10 inclusive
-    const num2 = Math.floor(Math.random() * 12) + 1;
+    const range = difficulty;
+    const num1 = Math.floor(Math.random() * range) + 1;        // Generates number between 1 and 10 inclusive
+    const num2 = Math.floor(Math.random() * range) + 1;
     answer = num1 * num2;
 
     return [num1, num2, '*'];
 }
-function genDivision(difficulty = 1)
+function genDivision()
 {
     // 
     // Generates a randomized division equation using only whole positive numbers. 
     // Returns a tuple of 3 integers being num1, num2, and  answer
     // 
 
-    let range = 12; 
+    const range = difficulty; 
     const maxNum2 = Math.floor(range / 2); 
 
     const num2 = Math.floor(Math.random() * maxNum2) + 1; 
@@ -168,7 +171,7 @@ function updateQuestion(num1, num2, symbol)
 
 function setEasy() 
 {
-    difficulty = 1;
+    difficulty = 12;
      // Hides the difficulty options and displays the game conatiner
      document.getElementById("difficulty").style.display = "none";
      document.getElementById("game").style.display = ""; 
@@ -176,7 +179,7 @@ function setEasy()
 }
 function setMedium()
 {
-    difficulty = 2;
+    difficulty = 15;
      // Hides the difficulty options and displays the game conatiner
      document.getElementById("difficulty").style.display = "none";
      document.getElementById("game").style.display = ""; 
@@ -184,7 +187,7 @@ function setMedium()
 }
 function setHard()
 {
-    difficulty = 3;
+    difficulty = 20;
      // Hides the difficulty options and displays the game conatiner
      document.getElementById("difficulty").style.display = "none";
      document.getElementById("game").style.display = "";
