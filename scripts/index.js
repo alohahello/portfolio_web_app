@@ -56,8 +56,8 @@ function genDivision(difficulty = 1)
     // Returns a tuple of 3 integers being num1, num2, and  answer
     // 
 
-    let range = 10; 
-    let maxNum2 = Math.floor(range / 2); 
+    let range = 12; 
+    const maxNum2 = Math.floor(range / 2); 
 
     const num2 = Math.floor(Math.random() * maxNum2) + 1; 
     const maxMultiplier = Math.floor(range / num2); 
@@ -156,6 +156,8 @@ function updateQuestion(num1, num2, symbol)
 }
 
 
+// SET DIFFICULTY BUTTON FUNCTIONS
+
 function setEasy() 
 {
     difficulty = 1;
@@ -171,6 +173,8 @@ function setHard()
     difficulty = 3;
     runGame();
 }
+
+// GAME LOGIC
 
 function runGame()
 {
