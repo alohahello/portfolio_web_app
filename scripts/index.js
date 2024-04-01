@@ -169,16 +169,26 @@ function updateQuestion(num1, num2, symbol)
 function setEasy() 
 {
     difficulty = 1;
+     // Hides the difficulty options and displays the game conatiner
+     document.getElementById("difficulty").style.display = "none";
+     document.getElementById("game").style.display = ""; 
     runGame();
 }
 function setMedium()
 {
     difficulty = 2;
+     // Hides the difficulty options and displays the game conatiner
+     document.getElementById("difficulty").style.display = "none";
+     document.getElementById("game").style.display = ""; 
     runGame();
 }
 function setHard()
 {
     difficulty = 3;
+     // Hides the difficulty options and displays the game conatiner
+     document.getElementById("difficulty").style.display = "none";
+     document.getElementById("game").style.display = "";
+
     runGame();
 }
 
@@ -192,10 +202,7 @@ function runGame()
     // displays the question until a correct answer is submitted.
     // 
 
-    // Hides the difficulty options and displays the game conatiner
-    document.getElementById("difficulty").style.display = "none";
-    document.getElementById("game").style.display = "";
-
+   
     // Generates random number between 1-4
     const gen = Math.floor(Math.random() * 4) + 1;
 
