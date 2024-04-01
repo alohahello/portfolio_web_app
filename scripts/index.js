@@ -2,12 +2,15 @@ const userAnswerElement   = document.getElementById("userAnswer");
 const question            = document.getElementById("question");
 const result              = document.getElementById("result");
 const gameContainer       = document.getElementById("game");
+const scoreElement        = document.getElementById("score");
+
 gameContainer.style.display = "none";
 
 // Global Variables
 var difficulty = 12;
 var score = 0;
 
+scoreElement.innerText = "Score: " + score;
 
 
 // EQUATION GENERATION FUNCTIONS
@@ -137,7 +140,8 @@ function checkAnswer() {
     if (resultMessage == 'Correct!') 
     {
         score++; // Increment score if answer is correct
-        result.innerText = resultMessage + " Your score: " + score;
+        result.innerText = resultMessage;
+        scoreElement.innerText = "Score: " + score;
     } 
     
     else 

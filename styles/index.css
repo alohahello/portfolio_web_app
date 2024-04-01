@@ -67,4 +67,10 @@ button:hover {
     font-weight: bold;
 }
 
-
+#score {
+    text-align: center;
+    font-weight: bold;
+    font-size: 40px;
+    padding: 0px;
+    margin: 10px;
+}
