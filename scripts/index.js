@@ -114,7 +114,7 @@ function checkAnswer() {
     // Loops the program when the answer is correct
     if (resultMessage == 'Correct!')
     {
-        main();
+        runGame();
     }
 
 }
@@ -129,9 +129,9 @@ function updateQuestion(num1, num2, symbol)
 }
 
 
-// MAIN FUNCTION
 
-function main()
+
+function runGame()
 {
     // 
     // Runs the logic of the page.
@@ -174,6 +174,18 @@ function main()
     updateQuestion(num1, num2, symbol);
 
 
+}
+
+// MAIN FUNCTION
+
+function main()
+{
+    //
+    // Will show and hide the different divs, will also call the runGame() function
+    //
+
+
+    
 }
 
 
