@@ -10,6 +10,7 @@ gameContainer.style.display = "none";
 var difficulty = 12;
 var score = 0;
 
+// Displays score as 0 before the game starts
 scoreElement.innerText = "Score: " + score;
 
 
