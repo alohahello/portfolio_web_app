@@ -1,8 +1,11 @@
-const gameBox           =  document.getElementById("gameBox");
-const mathBox           =  document.getElementById("mathBox");
-const userAnswerElement =  document.getElementById("userAnswer");
-const question          =  document.getElementById("question");
-const result            =  document.getElementById("result");
+const userAnswerElement   = document.getElementById("userAnswer");
+const question            = document.getElementById("question");
+const result              = document.getElementById("result");
+const gameContainer       = document.getElementById("game");
+gameContainer.style.display = "none";
+
+// Global Variables
+var difficulty = 1;
 
 
 // EQUATION GENERATION FUNCTIONS
@@ -53,9 +56,14 @@ function genDivision(difficulty = 1)
     // Returns a tuple of 3 integers being num1, num2, and  answer
     // 
 
-    const num1 = Math.floor(Math.random() * 12) + 1;        // Generates number between 1 and 10 inclusive
-    const num2 = Math.floor(Math.random() * 12) + 1;
-    answer = num1 / num2;
+    let range = 10; 
+    let maxNum2 = Math.floor(range / 2); 
+
+    const num2 = Math.floor(Math.random() * maxNum2) + 1; 
+    const maxMultiplier = Math.floor(range / num2); 
+    const multiplier = Math.floor(Math.random() * maxMultiplier) + 1; 
+    const num1 = num2 * multiplier; 
+    const answer = num1 / num2; 
 
     return [num1, num2, '÷'];
 }
@@ -73,9 +81,11 @@ function checkAnswer() {
     const question = document.getElementById("question");
     // Fetch the string of the question element
     const questionText = question.innerText;
+    const questionList = questionText.split(" ");
     // Gets num1 and num2 by index and converts string to int
-    const num1 = parseInt(questionText[0]);
-    const num2 = parseInt(questionText[4]);
+    const num1 = parseInt(questionList[0]);
+    const num2 = parseInt(questionList[2]);
+
 
 
     // Fetch the userAnswerElement again from the DOM
@@ -87,22 +97,22 @@ function checkAnswer() {
 
 
     // Fetch the type of equation
-    const symbol = questionText[2];
-    switch(symbol)
+    const eqtype = question.dataset.eqType;
+    switch(eqtype)
     {
-        case '+':
+        case 'addition':
             // Check if the user's answer matches the correct answer
             resultMessage = userAnswer === num1 + num2 ? 'Correct!' : 'Incorrect. Try again.';
             break;
-        case '-':
+        case 'subtraction':
             // Check if the user's answer matches the correct answer
             resultMessage = userAnswer === num1 - num2 ? 'Correct!' : 'Incorrect. Try again.';
             break;
-        case '*':
+        case 'multiplication':
             // Check if the user's answer matches the correct answer
             resultMessage = userAnswer === num1 * num2 ? 'Correct!' : 'Incorrect. Try again.';
             break;
-        case '÷':
+        case 'division':
             // Check if the user's answer matches the correct answer
             resultMessage = userAnswer === num1 / num2 ? 'Correct!' : 'Incorrect. Try again.';
             break;
@@ -114,7 +124,7 @@ function checkAnswer() {
     // Loops the program when the answer is correct
     if (resultMessage == 'Correct!')
     {
-        main();
+        runGame();
     }
 
 }
@@ -126,12 +136,43 @@ function updateQuestion(num1, num2, symbol)
     // 
 
     question.innerHTML = `${num1} ${symbol} ${num2} = <input type='text' id='userAnswer' required>`;
+
+    // Updates the question dataset to rememeber the type of equation via string
+    switch(symbol)
+    {
+        case '+':
+            question.dataset.eqType = "addition";
+            break;
+        case '-':
+            question.dataset.eqType = "subtraction";
+            break;
+        case '*':
+            question.dataset.eqType = "multiplication";
+            break;
+        case '÷':
+            question.dataset.eqType = "division";
+            break;
+    }
 }
 
 
-// MAIN FUNCTION
+function setEasy() 
+{
+    difficulty = 1;
+    runGame();
+}
+function setMedium()
+{
+    difficulty = 2;
+    runGame();
+}
+function setHard()
+{
+    difficulty = 3;
+    runGame();
+}
 
-function main()
+function runGame()
 {
     // 
     // Runs the logic of the page.
@@ -139,6 +180,9 @@ function main()
     // displays the question until a correct answer is submitted.
     // 
 
+    // Hides the difficulty options and displays the game conatiner
+    document.getElementById("difficulty").style.display = "none";
+    document.getElementById("game").style.display = "";
 
     // Generates random number between 1-4
     const gen = Math.floor(Math.random() * 4) + 1;
@@ -172,9 +216,4 @@ function main()
     // Updates HTML to display new equation
     // -1 + -1 IS DEFAULT HTML EQUATION IF THIS FAILS
     updateQuestion(num1, num2, symbol);
-
-
 }
-
-
-main();
