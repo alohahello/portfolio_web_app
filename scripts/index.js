@@ -32,9 +32,17 @@ function genSubtraction(difficulty = 1)
 
     const num1 = Math.floor(Math.random() * 12) + 1;        // Generates number between 1 and 10 inclusive
     const num2 = Math.floor(Math.random() * 12) + 1;
-    answer = num1 - num2;
 
-    return [num1, num2, '-'];
+    if (num1 > num2)
+    {
+        answer = num1 - num2;
+        return [num1, num2, '-'];
+    }
+    else
+    {
+        answer = num2 - num1;
+        return [num2, num1, '-'];
+    }
 }
 function genMultiplication(difficulty = 1)
 {
