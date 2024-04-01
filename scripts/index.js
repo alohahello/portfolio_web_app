@@ -1,8 +1,11 @@
-const gameBox           =  document.getElementById("gameBox");
-const mathBox           =  document.getElementById("mathBox");
-const userAnswerElement =  document.getElementById("userAnswer");
-const question          =  document.getElementById("question");
-const result            =  document.getElementById("result");
+const userAnswerElement   = document.getElementById("userAnswer");
+const question            = document.getElementById("question");
+const result              = document.getElementById("result");
+const gameContainer       = document.getElementById("game");
+gameContainer.style.display = "none";
+
+// Global Variables
+var difficulty = 1;
 
 
 // EQUATION GENERATION FUNCTIONS
@@ -17,6 +20,7 @@ function genAddition(difficulty = 1)
     const num1 = Math.floor(Math.random() * 12) + 1;        // Generates number between 1 and 10 inclusive
     const num2 = Math.floor(Math.random() * 12) + 1;
     answer = num1 + num2;
+    console.log(answer);
 
     return [num1, num2, '+'];
 }
@@ -30,6 +34,7 @@ function genSubtraction(difficulty = 1)
     const num1 = Math.floor(Math.random() * 12) + 1;        // Generates number between 1 and 10 inclusive
     const num2 = Math.floor(Math.random() * 12) + 1;
     answer = num1 - num2;
+    console.log(answer);
 
     return [num1, num2, '-'];
 }
@@ -43,6 +48,7 @@ function genMultiplication(difficulty = 1)
     const num1 = Math.floor(Math.random() * 12) + 1;        // Generates number between 1 and 10 inclusive
     const num2 = Math.floor(Math.random() * 12) + 1;
     answer = num1 * num2;
+    console.log(answer);
 
     return [num1, num2, '*'];
 }
@@ -56,6 +62,7 @@ function genDivision(difficulty = 1)
     const num1 = Math.floor(Math.random() * 12) + 1;        // Generates number between 1 and 10 inclusive
     const num2 = Math.floor(Math.random() * 12) + 1;
     answer = num1 / num2;
+    console.log(answer);
 
     return [num1, num2, '÷'];
 }
@@ -129,7 +136,22 @@ function updateQuestion(num1, num2, symbol)
 }
 
 
-
+function setEasy() 
+{
+    difficulty = 1;
+    console.log('easy');
+    runGame();
+}
+function setMedium()
+{
+    difficulty = 2;
+    runGame();
+}
+function setHard()
+{
+    difficulty = 3;
+    runGame();
+}
 
 function runGame()
 {
@@ -139,6 +161,9 @@ function runGame()
     // displays the question until a correct answer is submitted.
     // 
 
+    // Hides the difficulty options and displays the game conatiner
+    document.getElementById("difficulty").style.display = "none";
+    document.getElementById("game").style.display = "";
 
     // Generates random number between 1-4
     const gen = Math.floor(Math.random() * 4) + 1;
@@ -172,21 +197,4 @@ function runGame()
     // Updates HTML to display new equation
     // -1 + -1 IS DEFAULT HTML EQUATION IF THIS FAILS
     updateQuestion(num1, num2, symbol);
-
-
 }
-
-// MAIN FUNCTION
-
-function main()
-{
-    //
-    // Will show and hide the different divs, will also call the runGame() function
-    //
-
-
-    
-}
-
-
-main();
