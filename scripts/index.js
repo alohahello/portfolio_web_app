@@ -6,6 +6,7 @@ gameContainer.style.display = "none";
 
 // Global Variables
 var difficulty = 1;
+var score = 0;
 
 
 // EQUATION GENERATION FUNCTIONS
@@ -120,6 +121,17 @@ function checkAnswer() {
 
     // Display the result message
     result.innerText = resultMessage;
+
+    if (resultMessage == 'Correct!') 
+    {
+        score++; // Increment score if answer is correct
+        result.innerText = resultMessage + " Your score: " + score;
+    } 
+    
+    else 
+    {
+        result.innerText = resultMessage;
+    }
     
     // Loops the program when the answer is correct
     if (resultMessage == 'Correct!')
