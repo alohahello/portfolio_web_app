@@ -85,6 +85,22 @@ function genDivision()
     return [num1, num2, '÷'];
 }
 
+// Add event listener to input element for "Enter" key press
+userAnswerElement.addEventListener("keypress", function(event) {
+    // Check if the key pressed is "Enter" (key code 13)
+    if (event.key === "Enter") {
+        checkAnswer();
+    }
+});
+
+// Add event listener to the document for "Enter" key press
+document.addEventListener("keypress", function(event) {
+    // Check if the key pressed is "Enter" (key code 13)
+    if (event.key === "Enter") {
+        checkAnswer();
+    }
+});
+
 
 // UPDATE HTML FUNCTIONS
 
@@ -103,8 +119,6 @@ function checkAnswer() {
     const num1 = parseInt(questionList[0]);
     const num2 = parseInt(questionList[2]);
 
-
-
     // Fetch the userAnswerElement again from the DOM
     const userAnswerElement = document.getElementById("userAnswer");
     // Retrieve the value from the input element
@@ -112,9 +126,10 @@ function checkAnswer() {
     // Convert the user's answer to a number
     userAnswer = parseInt(userAnswer);
 
-
     // Fetch the type of equation
     const eqtype = question.dataset.eqType;
+    let resultMessage;
+
     switch(eqtype)
     {
         case 'addition':
@@ -133,6 +148,13 @@ function checkAnswer() {
             // Check if the user's answer matches the correct answer
             resultMessage = userAnswer === num1 / num2 ? 'Correct!' : 'Incorrect. Try again.';
             break;
+    }
+
+    // Apply styles based on the result
+    if (resultMessage === 'Correct!') {
+        userAnswerElement.style.color = 'green'; // Change color to green for correct answer
+    } else {
+        userAnswerElement.style.color = 'red'; // Change color to red for incorrect answer
     }
 
     // Display the result message
@@ -183,6 +205,8 @@ function updateQuestion(num1, num2, symbol)
             break;
     }
 }
+
+
 
 
 // SET DIFFICULTY BUTTON FUNCTIONS
