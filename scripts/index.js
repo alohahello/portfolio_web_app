@@ -85,6 +85,20 @@ function genDivision()
     return [num1, num2, '÷'];
 }
 
+// CHECK ANSWER BY PRESING ENTER KEY 
+
+userAnswerElement.addEventListener("keypress", function(event) {
+    if (event.key === "Enter") {
+        checkAnswer();
+    }
+});
+
+document.addEventListener("keypress", function(event) {
+    if (event.key === "Enter") {
+        checkAnswer();
+    }
+});
+
 
 // UPDATE HTML FUNCTIONS
 
@@ -183,6 +197,8 @@ function updateQuestion(num1, num2, symbol)
             break;
     }
 }
+
+
 
 
 // SET DIFFICULTY BUTTON FUNCTIONS
